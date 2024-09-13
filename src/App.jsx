@@ -2,13 +2,19 @@ import { useState } from 'react';
 import './App.css'
 
 function App() {
-  function escapeString(text) {
-  return text
-    .replace(/"/g, '\\"')    // escapes double quotes 
-    .replace(/\\/g, '\\\\')  // Escapes backslashes
-    
   
+
+  function escapeString(str) {
+    return str
+      .replace(/\\/g, '\\\\')  // Escape backslashes
+      .replace(/"/g, '\\"')     // Escape double quotes
+      .replace(/\n/g, '\\n')    // Escape new lines
+      .replace(/\r/g, '\\r')    // Escape carriage returns
+      .replace(/\t/g, '\\t')    // Escape tabs
+      .replace(/\f/g, '\\f')    // Escape form feeds
+      .replace(/\b/g, '\\b');   // Escape backspaces
   }
+  
   
   const [text, setText] = useState("");
   const [newText, setNewText] = useState("");
